@@ -9,6 +9,11 @@ class Section(models.Model):
     user = models.ForeignKey(User, unique=False, null=True, blank=True, default=None)
     completed = models.BooleanField(default=False)
 
+    bounding_box_top_left_latitude = models.DecimalField()
+    bounding_box_top_left_longitude = models.DecimalField()
+
+    bounding_box_bottom_right = models.DecimalField()
+
     def __unicode__(self):
         return "Section %d" % (self.index)
 
