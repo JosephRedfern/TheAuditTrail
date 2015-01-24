@@ -6,6 +6,8 @@ from django.contrib.auth.models import User
 class Section(models.Model):
     index = models.IntegerField()
     region = models.ForeignKey('Region')
+    user = models.ForeignKey(User, unique=False, null=True, blank=True, default=None)
+    completed = models.BooleanField(default=False)
 
     def __unicode__(self):
         return "Section %d" % (self.index)
@@ -15,18 +17,3 @@ class Region(models.Model):
 
     def __unicode__(self):
         return self.name
-   
-class Event(models.Model):
-    name = models.CharField(max_length=255) 
-    date = models.DateTimeField()
-
-    def __unicode__(self):
-        return "Event %s on %s" % (self.name, self.date)
-
-class Registration(models.Model):
-    user = models.ForeignKey(User, unique=True)
-    section = models.ForeignKey('Section')
-    event = models.ForeignKey('Event')
-
-    def __unicode__(self):
-        return "Registration by %s for %s" % (self.user, self.event)

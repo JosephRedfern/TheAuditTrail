@@ -5,24 +5,33 @@
 
 
 {% block content %}
-<h1>{{latest_event}}</h1>
 
-<h2>All Sections</h2>
-{% if all_sections %}
+<h1>#TheAuditTrail</h1>
+
+<h2>Sections</h2>
 <table class="table">
     <tr>
     <th>Region</th>
-    <th>Index</th>
+    <th>Section Index</th>
     <th>Available?</th>
     </tr>
-    {% for section in all_sections %}
-    <tr>
+    {% for section in sections %}
+    <tr class="{%if section.completed %}success{% elif section.user %}warning{%else%}danger{% endif %}">
         <td>{{section.region.name}}</td>
         <td>{{section.index}}</td>    
-        <td>{%if section.registration_set %}{{section.registration_set.get(event=}}{% endif %}</td>
+        <td>{% if section.user and section.completed %} Completed by {{section.user }} {% elif section.user %} Taken by {{section.user }} {%else%} Available {%endif%}</td>
     </tr>
     {% endfor %}
 </table>
-{% endif %}
+
+<div style="width: 300px">
+    <h3>Key:</h3>
+    <table class="table">
+        <tr class="success"><th>Section Completed</th></tr>
+        <tr class="warning"><th>Section Reserved</th></tr>
+        <tr class="danger"><th>Section Available</th></tr>
+    </table>
+</div>
+
 
 {% endblock %}
