@@ -30,4 +30,4 @@ class Registration(models.Model):
     event = models.ForeignKey('Event')
 
     def __unicode__(self):
-        return "Registration by %s for %s" % (user, event)
+        return "Registration by %s for %s" % (self.user, self.event)

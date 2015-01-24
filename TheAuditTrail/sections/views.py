@@ -5,8 +5,8 @@ from models import Section, Region, Event, Registration
 
 def list_sections(request):
     values = {}
-    registrations = Registration.objects.get()
+    registrations = Registration.objects.all()
 
     values['registrations'] = registrations
 
-    return render_to_response('sections.html', registered_sections)
+    return render_to_response('sections.html', values)
