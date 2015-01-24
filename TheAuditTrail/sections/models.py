@@ -10,7 +10,6 @@ class Section(models.Model):
     def __unicode__(self):
         return "Section %d" % (self.index)
 
-
 class Region(models.Model):
     name = models.CharField(max_length=255)
 
