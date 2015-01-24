@@ -36,6 +36,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.gis',
+    'leaflet',
     'sections',
 )
 
@@ -59,7 +61,8 @@ WSGI_APPLICATION = 'TheAuditTrail.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+#        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.contrib.gis.db.backends.spatialite',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
@@ -83,3 +86,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = "/"
+SPATIALITE_LIBRARY_PATH='/usr/local/lib/mod_spatialite.dylib'
+
+LEAFLET_CONFIG = {
+        'DEFAULT_CENTER': (52.463, -3.416),
+        'DEFAULT_ZOOM': 7,
+        'MIN_ZOOM': 3,
+        'MAX_ZOOM': 18,
+}

@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.contrib.gis.db import models
 
 # Create your models here.
 
@@ -8,11 +9,9 @@ class Section(models.Model):
     region = models.ForeignKey('Region')
     user = models.ForeignKey(User, unique=False, null=True, blank=True, default=None)
     completed = models.BooleanField(default=False)
+    bounding_box = models.PolygonField(null=True, blank=True, srid=4326)
 
-    bounding_box_top_left_latitude = models.DecimalField()
-    bounding_box_top_left_longitude = models.DecimalField()
-
-    bounding_box_bottom_right = models.DecimalField()
+    objects = models.GeoManager() #enable geo-dealings
 
     def __unicode__(self):
         return "Section %d" % (self.index)
