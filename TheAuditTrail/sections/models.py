@@ -22,7 +22,7 @@ class Event(models.Model):
     date = models.DateTimeField()
 
     def __unicode__(self):
-        return "Event on %s" % (self.date)
+        return "Event %s on %s" % (self.name, self.date)
 
 class Registration(models.Model):
     user = models.ForeignKey(User, unique=True)

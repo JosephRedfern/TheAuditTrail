@@ -8,5 +8,7 @@ def list_sections(request):
     registrations = Registration.objects.all()
 
     values['registrations'] = registrations
+    values['latest_event'] = Event.objects.latest('date').name
+    values['all_sections'] = Section.objects.all()
 
     return render_to_response('sections.html', values)
