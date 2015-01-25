@@ -5,7 +5,7 @@ from django.contrib.gis.db import models
 # Create your models here.
 
 class Section(models.Model):
-    index = models.IntegerField()
+    index = models.IntegerField(unique=True)
     region = models.ForeignKey('Region')
     user = models.ForeignKey(User, unique=False, null=True, blank=True, default=None)
     completed = models.BooleanField(default=False)
@@ -14,10 +14,11 @@ class Section(models.Model):
     objects = models.GeoManager() #enable geo-dealings
 
     def __unicode__(self):
-        return "Section %d" % (self.index)
+        return "%s: Section %d" % (self.region.name, self.index)
 
 class Region(models.Model):
     name = models.CharField(max_length=255)
+    url = models.URLField(null=True, blank=True)
 
     def __unicode__(self):
         return self.name

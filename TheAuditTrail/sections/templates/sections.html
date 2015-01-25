@@ -14,12 +14,15 @@
     <th>Region</th>
     <th>Section Index</th>
     <th>Available?</th>
+    <th>Actions</th>
     </tr>
     {% for section in sections %}
     <tr class="{%if section.completed %}success{% elif section.user %}warning{%else%}danger{% endif %}">
-        <td>{{section.region.name}}</td>
+        <td>{%if section.region.url %}<a href="{{section.region.url}}">{{section.region.name}}</a>{%else%}{{section.region.name}}{%endif%}</td>
         <td>{{section.index}}</td>    
-        <td>{% if section.user and section.completed %} Completed by {{section.user }} {% elif section.user %} Taken by {{section.user }} {%else%} Available {%endif%}</td>
+        <td>{% if section.user and section.completed %} Completed by {{section.user }} {% elif section.user %} Reserved by {{section.user }} {%else%} Available {%endif%}</td>
+        <td>
+            {% if user == section.user and section.completed %} Un-mark as Completed {% elif section.completed %}  {% elif user == section.user %} Mark as Completed {% elif user.is_authenticated %} Reserve Section {% else %} <a href="/accounts/login"> Login </a> {% endif %}
     </tr>
     {% endfor %}
 </table>
@@ -32,7 +35,5 @@
         <tr class="danger"><th>Section Available</th></tr>
     </table>
 </div>
-
-Current User: {{ user }}
 
 {% endblock %}

@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.gis',
     'leaflet',
     'sections',
+    'djgeojson',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -90,7 +91,7 @@ SPATIALITE_LIBRARY_PATH='/usr/local/lib/mod_spatialite.dylib'
 
 LEAFLET_CONFIG = {
         'DEFAULT_CENTER': (52.463, -3.416),
-        'DEFAULT_ZOOM': 7,
+        'DEFAULT_ZOOM': 8,
         'MIN_ZOOM': 3,
         'MAX_ZOOM': 18,
 }

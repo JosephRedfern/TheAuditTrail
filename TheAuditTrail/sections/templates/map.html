@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load geojson_tags %}
+{% load leaflet_tags %}
+
+
+{% block title %} Latest Events {% endblock %}
+
+{% load staticfiles %}
+
+
+{% block content %}
+
+<h1>#TheAuditTrail</h1>
+
+<h2>Section Availability Map</h2>
+
+<script type="text/javascript">
+
+    function onEachFeature(feature, layer) {
+        // does this feature have a property named popupContent?
+        if (feature.properties && feature.properties.id) {
+            layer.bindPopup(feature.properties.id);
+        }
+    }
+
+      var collection = {{ areas|geojsonfeature:"id,colour:polygon"|safe}};
+      function init_map(map, options) {
+          L.geoJson(collection, {
+            style: function(feature){
+                return {color: feature.properties.colour};
+            },
+            onEachFeature: onEachFeature
+
+            }).addTo(map);
+      }
+</script>
+
+{% leaflet_map "sectionmap" callback="window.init_map" %}
+
+{% endblock %}
