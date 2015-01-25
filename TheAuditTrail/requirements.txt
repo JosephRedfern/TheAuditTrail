@@ -1,0 +1,7 @@
+Django==1.7.3
+django-appconf==0.6
+django-geojson==2.6.0
+django-leaflet==0.15.2
+pysqlite==2.6.3
+six==1.9.0
+wsgiref==0.1.2
