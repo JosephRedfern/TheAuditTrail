@@ -13,6 +13,9 @@ class Section(models.Model):
 
     objects = models.GeoManager() #enable geo-dealings
 
+    class Meta:
+        ordering = ["index"]
+
     def __unicode__(self):
         return "%s: Section %d" % (self.region.name, self.index)
 

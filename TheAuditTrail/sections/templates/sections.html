@@ -14,15 +14,17 @@
     <th>Region</th>
     <th>Section Index</th>
     <th>Available?</th>
-    <th>Actions</th>
+    {% if user.is_authenticated%} <th>Toggle Reservation</th> <th>Toggle Complete</th> {% endif %}
     </tr>
     {% for section in sections %}
     <tr class="{%if section.completed %}success{% elif section.user %}warning{%else%}danger{% endif %}">
         <td>{%if section.region.url %}<a href="{{section.region.url}}">{{section.region.name}}</a>{%else%}{{section.region.name}}{%endif%}</td>
         <td>{{section.index}}</td>    
         <td>{% if section.user and section.completed %} Completed by {{section.user }} {% elif section.user %} Reserved by {{section.user }} {%else%} Available {%endif%}</td>
-        <td>
-            {% if user == section.user and section.completed %} Un-mark as Completed {% elif section.completed %}  {% elif user == section.user %} Mark as Completed {% elif user.is_authenticated %} Reserve Section {% else %} <a href="/accounts/login"> Login </a> {% endif %}
+        {% if user.is_authenticated %}
+        <td>{% if section.user == user and section.completed %}<a class="btn btn-default disabled btn-xs"><span class="glyphicon glyphicon-remove"></span> Release</a>{% elif section.user == user %} <a class="btn btn-default btn-xs" href="/toggleReserved/{{section.index}}"><span class="glyphicon glyphicon-remove"></span> Release</a> {% elif section.user %} <a class="btn btn-default disabled btn-xs"><span class="glyphicon glyphicon-remove"></span> Release</a>{%else%} <a class="btn btn-default btn-xs" href="/toggleReserved/{{section.index}}"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span> Reserve</a>{% endif %} </td>
+        <td>{% if section.user == user and section.completed %} <a class="btn btn-default btn-xs" href="/toggleComplete/{{section.index}}"><span class="glyphicon glyphicon-road"></span> Mark Uncompleted</a>{% elif section.user == user %} <a class="btn btn-default btn-xs" href="/toggleComplete/{{section.index}}"><span class="glyphicon glyphicon-flag"></span> Mark Complete</a> {% else %} <a class="btn disabled btn-default btn-xs"><span class="glyphicon glyphicon-flag"></span> Mark Complete</a> {%endif%} </td>
+        {% endif %}
     </tr>
     {% endfor %}
 </table>

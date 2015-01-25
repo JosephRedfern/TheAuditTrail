@@ -32,3 +32,33 @@ def view_map(request):
     values['areas'] = mapPoints
 
     return render(request, 'map.html', values)
+
+def toggle_complete(request, section_id):
+    section = Section.objects.get(index=int(section_id))
+    if section.user is not None and section.completed:
+        print "Owner is requesting un-completion"
+        section.completed = not section.completed
+        section.save()
+    elif section and section.user == request.user:
+        print "Logged-in user is requesting completion"
+        section.completed = not section.completed
+        section.save()
+    else:
+        print "invalid request"
+    return HttpResponseRedirect("/")
+
+def toggle_reserved(request, section_id):
+    section = Section.objects.get(index=int(section_id))
+    if section.user is None and request.user.is_authenticated():
+        print "Valid user, reserving section %s" % (section_id)
+        section.user = request.user
+        section.save()
+
+    elif (section.user == request.user):
+        print "Valid Request, toggling reservation"
+        section.user = None
+        section.save()
+
+    return HttpResponseRedirect("/")
+
+

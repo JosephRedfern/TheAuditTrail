@@ -51,7 +51,7 @@
               <li><a href="/">View Sections</a></li>
               <li><a href="/map">View Map</a></li>
               {%if user.is_superuser %} <li><a href="/admin">Admin</a></li>{% endif %}
-              {% if user.is_authenticated %} <li><a href="/accounts/logout">Logout</a></li> {% else %}
+              {% if user.is_authenticated %} <li><a href="/accounts/logout">Logout ({{user}})</a></li> {% else %}
               <li><a href="/accounts/login">Login</a></li> <li><a href="/register">Register</a></li> {% endif %}
                           </ul>
           </div><!--/.nav-collapse -->
@@ -60,7 +60,6 @@
 
       <div>
           {% block content %} {% endblock %}
-          User: {{user}}
       </div> <!-- /container -->
 
 
