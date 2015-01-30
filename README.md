@@ -1,3 +1,6 @@
+![Build Status](https://api.travis-ci.org/JosephRedfern/TheAuditTrail.svg)
+
+
 TheAuditTrail
 =============
 
