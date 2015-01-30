@@ -25,3 +25,8 @@ class Region(models.Model):
 
     def __unicode__(self):
         return self.name
+
+class Event(models.Model):
+    name = models.CharField(max_length=255)
+    participants = models.ManyToManyField(User)
+    sections = models.ManyToManyField(Section) #optionally allow only specific sections in an event

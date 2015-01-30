@@ -15,4 +15,4 @@ For the purposes of the hackathon, we've used an sqlite database backend with ge
 
 You'll also need to install the necessary python modules; this can be done by running "pip install -r requirements.txt" from within the TheAuditTrail directory.
 
-Once the requirements have been installed, the project can be run with the command "python manage.py runserver" to get up and running quickly - refer [How to deploy with WSGI](https://docs.djangoproject.com/en/1.7/howto/deployment/wsgi/)  Django documentation for a more long-term, robust solution. It's worth noting that this is currently "hackathon quality code", and may be riddled with bugs - here be dragons!
+Once the requirements have been installed, the project can be run with the command "python manage.py runserver" to get up and running quickly - refer to [How to deploy with WSGI](https://docs.djangoproject.com/en/1.7/howto/deployment/wsgi/)  Django documentation for a more long-term, robust solution. It's worth noting that this is currently "hackathon quality code", and may be riddled with bugs - here be dragons!
