@@ -1,4 +1,4 @@
-![Build Status](https://api.travis-ci.org/JosephRedfern/TheAuditTrail.svg)
+[![Build Status](https://api.travis-ci.org/JosephRedfern/TheAuditTrail.svg)](https://travis-ci.org/JosephRedfern/TheAuditTrail/)
 
 
 TheAuditTrail
