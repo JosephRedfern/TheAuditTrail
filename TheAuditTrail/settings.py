@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'leaflet',
     'sections',
     'djgeojson',
+    'django_nose',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -95,3 +96,5 @@ LEAFLET_CONFIG = {
         'MIN_ZOOM': 3,
         'MAX_ZOOM': 18,
 }
+
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
