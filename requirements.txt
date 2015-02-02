@@ -6,3 +6,4 @@ pysqlite==2.6.3
 six==1.9.0
 wsgiref==0.1.2
 nose
+coveralls
