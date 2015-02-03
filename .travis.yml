@@ -6,5 +6,12 @@ install:
     - "pip install -r requirements.txt"
 script: 
     - "sudo apt-get install spatialite-bin"
-    - "nosetests --with-coverage"
+    - "wget https://pypi.python.org/packages/source/p/pysqlite/pysqlite-2.6.3.tar.gz#md5=7ff1cedee74646b50117acff87aa1cfa"
+    - "tar xzf pysqlite-2.6.3.tar.gz"
+    - "cd pysqlite-2.6.3"
+    - "sed -i '/define=SQLITE_OMIT_LOAD_EXTENSION/d' ./setup.cfg"
+    - "python setup.py build"
+    - "python setup.py install"
+    - "cd ../"
+    - "coverage run --source=sections --omit=*/migrations/* ./manage.py test && coverage report"
 after_success: coveralls

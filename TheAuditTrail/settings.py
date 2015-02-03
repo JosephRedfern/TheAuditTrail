@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import sys
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -40,6 +41,7 @@ INSTALLED_APPS = (
     'leaflet',
     'sections',
     'djgeojson',
+    'django_nose',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -87,7 +89,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = "/"
-SPATIALITE_LIBRARY_PATH='/usr/local/lib/mod_spatialite.dylib'
+
+if sys.platform == "darwin":
+    SPATIALITE_LIBRARY_PATH='/usr/local/lib/mod_spatialite.dylib'
 
 LEAFLET_CONFIG = {
         'DEFAULT_CENTER': (52.463, -3.416),
@@ -95,3 +99,5 @@ LEAFLET_CONFIG = {
         'MIN_ZOOM': 3,
         'MAX_ZOOM': 18,
 }
+
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
