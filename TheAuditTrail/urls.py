@@ -13,4 +13,5 @@ urlpatterns = patterns('',
     url(r'^register/', CreateView.as_view(template_name='register.html', form_class=UserCreationForm, success_url='/')),
     #url(r'^login/', 'sections.views.login', name='login'),
     url(r'^accounts/', include('django.contrib.auth.urls')),
+    (r'^ckeditor/', include('ckeditor.urls')),
 )

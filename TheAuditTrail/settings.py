@@ -42,6 +42,8 @@ INSTALLED_APPS = (
     'sections',
     'djgeojson',
     'django_nose',
+    'pages',
+    'ckeditor',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -100,3 +102,6 @@ LEAFLET_CONFIG = {
 }
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_IMAGE_BACKEND = "pillow"
+CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
