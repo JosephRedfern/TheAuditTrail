@@ -41,7 +41,6 @@ INSTALLED_APPS = (
     'leaflet',
     'sections',
     'djgeojson',
-    'django_nose',
     'pages',
     'ckeditor',
 )
@@ -101,7 +100,6 @@ LEAFLET_CONFIG = {
         'MAX_ZOOM': 18,
 }
 
-TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_IMAGE_BACKEND = "pillow"
 CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
