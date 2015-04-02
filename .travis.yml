@@ -14,4 +14,5 @@ script:
     - "python setup.py install"
     - "cd ../"
     - "coverage run --source=sections --omit=*/migrations/* ./manage.py test && coverage report"
+    - "python manage.py migrate"
 after_success: coveralls
