@@ -9,6 +9,7 @@ class PageAdminForm(forms.ModelForm):
 
     class Meta:
         model = Page
+        exclude = []
 
 class PageAdmin(admin.ModelAdmin):
     form = PageAdminForm
